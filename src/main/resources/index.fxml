@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -11,26 +12,26 @@
 
 <javafx.scene.layout.Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tang.work.controller.Index">
    <children>
-      <Pane layoutX="-2.0" prefHeight="711.0" prefWidth="195.0" style="-fx-background-color: #DCE7F0;">
+      <Pane layoutX="-2.0" layoutY="7.0" prefHeight="708.0" prefWidth="195.0" style="-fx-background-color: #DCE7F0;">
          <children>
-            <Label layoutX="14.0" layoutY="28.0" text="联系组" textFill="#a8a4a4">
+            <Label layoutX="14.0" layoutY="27.0" prefHeight="20.0" prefWidth="65.0" text="分组" textFill="#a8a4a4">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Separator layoutX="13.0" layoutY="500.0" prefHeight="17.0" prefWidth="171.0" />
             <Label layoutX="11.0" layoutY="126.0" prefHeight="17.0" prefWidth="42.0" textFill="#a8a4a4" />
-            <Button layoutX="25.0" layoutY="657.0" mnemonicParsing="false" onAction="#delGroup" prefHeight="27.0" prefWidth="151.0" text="删 除 组" />
-            <Button layoutX="24.0" layoutY="614.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="27.0" prefWidth="151.0" text="添 加 组" />
-            <Button layoutX="21.0" layoutY="566.0" mnemonicParsing="false" onAction="#load" prefHeight="30.0" prefWidth="151.0" text="所有用户" />
-            <Button fx:id="admin" layoutX="24.0" layoutY="520.0" mnemonicParsing="false" onAction="#admin" prefHeight="30.0" prefWidth="151.0" text="管理用户" />
-            <ListView fx:id="groupsListView" layoutX="7.0" layoutY="47.0" onMousePressed="#selectByGroup" prefHeight="464.0" prefWidth="188.0" />
+            <JFXButton layoutX="25.0" layoutY="657.0" mnemonicParsing="false" onAction="#delGroup" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #C71585;" text="删 除 组" />
+            <JFXButton layoutX="24.0" layoutY="614.0" mnemonicParsing="false" onAction="#addGroup" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #708090;" text="添 加 组" />
+            <JFXButton layoutX="21.0" layoutY="566.0" mnemonicParsing="false" onAction="#load" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #E0FFFF;" text="所有用户" />
+            <JFXButton fx:id="admin" layoutX="24.0" layoutY="520.0" mnemonicParsing="false" onAction="#admin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00FFFF;" text="管理用户" />
+            <JFXListView fx:id="groupsListView" layoutX="1.0" layoutY="61.0" onMousePressed="#selectByGroup" prefHeight="445.0" prefWidth="195.0" />
          </children></Pane>
       <HBox layoutX="206.0" layoutY="4.0" prefHeight="45.0" prefWidth="457.0" spacing="5.0">
          <children>
-            <Button layoutX="209.0" layoutY="14.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: green;" text="新建联系人" textFill="#f3f5f3" />
-            <Button mnemonicParsing="false" onAction="#editPerson" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: #5bc0de;" text="编辑联系人" textFill="WHITE" />
-            <Button layoutX="682.0" layoutY="14.0" mnemonicParsing="false" onAction="#delPerson" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #d9534f;" text="删 除" textFill="WHITE" />
+            <JFXButton layoutX="209.0" layoutY="14.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: green;" text="新建联系人" textFill="#f3f5f3" />
+            <JFXButton mnemonicParsing="false" onAction="#editPerson" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: #5bc0de;" text="编辑联系人" textFill="WHITE" />
+            <JFXButton layoutX="682.0" layoutY="14.0" mnemonicParsing="false" onAction="#delPerson" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #d9534f;" text="删 除" textFill="WHITE" />
          </children>
       </HBox>
       <AnchorPane layoutX="193.0" layoutY="49.0">
@@ -51,7 +52,7 @@
       <HBox layoutX="627.0" layoutY="1.0" prefHeight="55.0" prefWidth="615.0">
          <children>
             <TextField fx:id="keyword" prefHeight="60.0" prefWidth="316.0" promptText="请输入姓名" />
-            <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#search" prefHeight="59.0" prefWidth="110.0" text="搜索" />
+            <JFXButton fx:id="searchBtn" mnemonicParsing="false" onAction="#search" prefHeight="59.0" prefWidth="110.0" style="-fx-background-color: #00BFFF;" text="搜索" />
          </children>
       </HBox>
    </children>
