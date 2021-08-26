@@ -43,6 +43,23 @@
     select count(*) from t_contact
         where groupid = #{groupid}
   </select>
+  <select id="selectSelective" resultType="com.tang.work.dao.Contact">
+    select * from t_contact
+    <where>
+      <if test="userid!=null">
+        userid = #{userid}
+      </if>
+      <if test="groupid!=null">
+        and groupid = #{groupid}
+      </if>
+      <if test="name!=null">
+        and name like '%'+#{name}+'%'
+      </if>
+    </where>
+
+
+
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_contact
     where id = #{id,jdbcType=INTEGER}

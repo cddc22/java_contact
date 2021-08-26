@@ -15,14 +15,17 @@ public interface ContactDao {
 
     int insertSelective(Contact record);
 
-    List<Contact> selectByPrimaryKey(@Param("name") String name);
+    //List<Contact> selectByPrimaryKey(@Param("name") String name);
     Contact selectById(@Param("id") Integer id);
 
     int countByGroup(int groupid);
 
-    List<Contact> selectAll();
+//    List<Contact> selectAll();
 
     List<Contact> selectByGroup(Integer id);
 
     int updateByPrimaryKeySelective(Contact record);
+
+    List<Contact> selectSelective(@Param("userid") Integer userid,@Param("groupid") Integer groupid, @Param("name") String name);
+
 }

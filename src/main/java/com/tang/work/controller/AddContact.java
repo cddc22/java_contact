@@ -68,6 +68,7 @@ public class AddContact implements Initializable {
         System.out.println(date);
         contact.setBirth(date);
         contact.setGroupid(selectedIndex);
+        contact.setUserid(ContactApplication.UserId);
         System.out.println(contact.toString());
         int i = contactDao.insertSelective(contact);
         if(i==1){

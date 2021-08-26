@@ -1,5 +1,6 @@
 package com.tang.work;
 
+import com.tang.work.dao.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,9 +22,11 @@ import java.util.Objects;
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.tang.work.dao")
+
 public class ContactApplication extends Application implements ApplicationRunner {
      public static boolean ROOT = false;
-    public static int USERID = 0;
+     public static int UserId = 0;
+     public static User user;
         private static ApplicationContext applicationContext;
         public static FXMLLoader loadFxml(String fxmlPath){
             FXMLLoader fxmlLoader = new FXMLLoader();

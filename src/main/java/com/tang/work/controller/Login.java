@@ -1,6 +1,7 @@
 package com.tang.work.controller;
 
 import com.tang.work.ContactApplication;
+import com.tang.work.dao.ContactDao;
 import com.tang.work.dao.User;
 import com.tang.work.dao.UserDao;
 import javafx.fxml.Initializable;
@@ -37,6 +38,9 @@ public class Login implements Initializable{
     private UserDao userDao;
     @Autowired
     private User user;
+    @Autowired
+    ContactDao contactDao;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -52,13 +56,19 @@ public class Login implements Initializable{
              alert.showAndWait();
          }else {
              user = userDao.selectByPrimaryKey(namestr, passwordstr);
-             if (user.getUserid().equals(1)) {
-                 ContactApplication.ROOT = true;
-             }
+
 
              if (user != null) {
+                 //打开主页 设置登录用户的id
+                 if (user.getUsername().equals("q")) {
+                     ContactApplication.ROOT = true;
+                 }
+                 int a = user.getUserid();
+                 //ContactApplication.user = user;
+                 ContactApplication.UserId = user.getUserid();
+                 //System.out.println("ii"+ContactApplication.user.getUserid());
+                 //log.info(ContactApplication.user.toString());
                  openMainWindows();
-                 ContactApplication.USERID = user.getUserid();
              } else {
                  alertLoginFail();
              }
@@ -113,6 +123,7 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(contactDao.selectSelective(1, null, null).toString());
 
     }
 }

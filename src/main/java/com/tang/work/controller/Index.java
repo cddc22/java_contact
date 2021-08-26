@@ -64,6 +64,7 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        log.info(String.valueOf("userid"+ContactApplication.UserId));
         load(0);
         bindProperty();
         if(!ContactApplication.ROOT){
@@ -95,7 +96,9 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
         }
 
    }
+   public void admin(){
 
+   }
     @SneakyThrows
     public void addGroup() {
         Stage mainStage = new Stage();
@@ -140,8 +143,9 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
     }
 
     public void search() {
-        contacts= contactDao.selectByPrimaryKey(keyword.getText());
+        contacts= contactDao.selectSelective(ContactApplication.UserId,null,keyword.getText());
         ObservableList<Contact> items = FXCollections.observableArrayList(contacts);
+        System.out.println(contacts.toString());
         contactTable.setItems(items);
         bindProperty();
     }
@@ -161,17 +165,18 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
         List<Group> groups = groupDao.selectAll();
         groupsListView.getItems().removeAll(groups);
         groupsListView.getItems().addAll(groups);
-
-        System.out.println(groupid);
+//  log.info(String.valueOf(ContactApplication.user.toString()));
+        //System.out.println("u色日电"+ContactApplication.user.getUserid());
         if (groupid==0) {
-            contacts = contactDao.selectAll();
+            contacts = contactDao.selectSelective(ContactApplication.UserId,null,null);
         } else {
-            contacts = contactDao.selectByGroup(groupid);
+            contacts = contactDao.selectSelective(ContactApplication.UserId,groupid,null);
         }
 
         //向表格中填充结果
         ObservableList<Contact> items = FXCollections.observableArrayList(contacts);
        contactTable.setItems(items);
+       log.info(contacts.toString());
 
     }
 
@@ -184,12 +189,15 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
     public void selectByGroup(MouseEvent mouseEvent) {
         if(mouseEvent.getClickCount()==2){
             load(groupsListView.getSelectionModel().getSelectedItem().getGroupid());
-            bindProperty(); }
+            bindProperty();
+        groupsListView.getSelectionModel().clearSelection();
+        }
     }
     @SneakyThrows
     public void admin(ActionEvent actionEvent) {
-        Stage mainStage = new Stage();
+        /*Stage mainStage = new Stage();
         mainStage.setScene(new Scene(ContactApplication.loadFxml("/admin.fxml").load()));
-        mainStage.show();
+        mainStage.show();*/
+        //todo admin
     }
 }
