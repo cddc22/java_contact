@@ -103,7 +103,7 @@ public class AddContact implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //List<Group> groups = groupDao.selectAll();
-        groupsListView.getItems().addAll(groupDao.selectAll());
+        groupsListView.getItems().addAll(groupDao.selectAll(null,ContactApplication.UserId));
         birth.setValue(LocalDate.of(1999,9,9));
     }
 }

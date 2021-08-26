@@ -70,8 +70,7 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
         if(!ContactApplication.ROOT){
             admin.setVisible(false);
         }
-        //searchBtn.setGraphic(new ImageView(new Image(ContactApplication.class.getResourceAsStream("/images/search.png"))));
-
+        contactTable.setPlaceholder(new Label("通讯录是空的哦！！！"));
     }
     @SneakyThrows
     public void delGroup() {
@@ -162,7 +161,7 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
     }
 
     private void load(int groupid) {
-        List<Group> groups = groupDao.selectAll();
+        List<Group> groups = groupDao.selectAll(null,ContactApplication.UserId);
         groupsListView.getItems().removeAll(groups);
         groupsListView.getItems().addAll(groups);
 //  log.info(String.valueOf(ContactApplication.user.toString()));

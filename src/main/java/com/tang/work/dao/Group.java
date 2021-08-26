@@ -13,6 +13,7 @@ public class Group implements Serializable {
     private Integer groupid;
 
     private String groupname;
+    private Integer userid;
 
     private static final long serialVersionUID = 1L;
     @Override

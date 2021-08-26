@@ -1,5 +1,6 @@
 package com.tang.work.controller;
 
+import com.tang.work.ContactApplication;
 import com.tang.work.dao.Contact;
 import com.tang.work.dao.ContactDao;
 import com.tang.work.dao.Group;
@@ -45,6 +46,7 @@ public class EditContact implements Initializable {
     Contact contact;
     @Autowired
     Index index;
+    private int contactid;
 
     public EditContact() {
     }
@@ -52,7 +54,7 @@ public class EditContact implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         reset();
-           groupsListView.getItems().addAll(groupDao.selectAll());
+        groupsListView.getItems().addAll(groupDao.selectAll(null,null));
     }
 
     public void addContact() {
@@ -70,9 +72,9 @@ public class EditContact implements Initializable {
             contact.setSex("女");
         }
         contact.setGroupid(selectedIndex);
-        System.out.println(contact.toString());
+        contact.setId(contactid);
+        contact.setUserid(ContactApplication.UserId);
         int i = contactDao.updateByPrimaryKeySelective(contact);
-        System.out.println(i+"fdfdsf");
         if (i == 1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("修改成功");
@@ -86,8 +88,6 @@ public class EditContact implements Initializable {
     }
 
     public void reset() {
-
-        System.out.println(index.selectUserId);
         name.clear();
         telephone.clear();
         wechat.clear();
@@ -105,6 +105,10 @@ public class EditContact implements Initializable {
         }else{
             sex2.setSelected(true);
         }
-        groupsListView.getSelectionModel().select(0);
+        contactid=contact.getId();
+        groupsListView.scrollTo(1);
+
+       //groupsListView.getSelectionModel().select(1);
+
     }
 }

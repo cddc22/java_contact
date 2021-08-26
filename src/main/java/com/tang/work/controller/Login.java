@@ -4,6 +4,7 @@ import com.tang.work.ContactApplication;
 import com.tang.work.dao.ContactDao;
 import com.tang.work.dao.User;
 import com.tang.work.dao.UserDao;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -96,7 +97,9 @@ public class Login implements Initializable{
             //alert.setGraphic(new ImageView(new Image(Objects.requireNonNull(ContactApplication.class.getResourceAsStream("/images/alert1.png")))));
             alert.initOwner(mainStage);
             alert.setHeaderText("您确定要现在退出程序？");
+
             Optional<ButtonType> result = alert.showAndWait();
+            Platform.exit();
             if (result.get() == ButtonType.CANCEL) {
                 event.consume();
             }
@@ -123,7 +126,6 @@ public class Login implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(contactDao.selectSelective(1, null, null).toString());
 
     }
 }

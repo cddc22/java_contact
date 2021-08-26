@@ -9,10 +9,10 @@ public interface GroupDao {
 
     int deleteByPrimaryKey(int id);
 
-    int insert(@Param("groupname")String groupname);
-    int selectByName(@Param("groupname") String groupname);
+    int insert(@Param("groupname")String groupname,@Param("userid") Integer userid);
+    //int selectByName(@Param("groupname") String groupname,@Param("userid") Integer userid);
 
-    List<Group> selectAll();
+    List<Group> selectAll(@Param("groupname") String groupname,@Param("userid") Integer userid);
 
     Group selectById(int id);
 }

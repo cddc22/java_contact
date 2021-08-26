@@ -1,6 +1,6 @@
 package com.tang.work.controller;
-
 import com.tang.work.ContactApplication;
+import com.tang.work.dao.Group;
 import com.tang.work.dao.GroupDao;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -11,6 +11,7 @@ import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -22,10 +23,11 @@ public class AddGroup {
     private GroupDao groupDao;
 
     public void addGro() {
-        int i = groupDao.selectByName(groupname.getText());
+        List<Group> i = groupDao.selectAll(groupname.getText(),ContactApplication.UserId);
+        System.out.println(i.toString());
 
-        if((i==0)){
-            groupDao.insert(groupname.getText());
+        if((i!=null)){
+            groupDao.insert(groupname.getText(),ContactApplication.UserId);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("添加成功");
             alert.setHeaderText("");

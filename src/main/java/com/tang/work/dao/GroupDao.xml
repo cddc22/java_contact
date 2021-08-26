@@ -3,29 +3,38 @@
 <mapper namespace="com.tang.work.dao.GroupDao">
   <resultMap id="BaseResultMap" type="com.tang.work.dao.Group">
     <id column="groupid" jdbcType="INTEGER" property="groupid" />
+
     <result column="groupname" jdbcType="VARCHAR" property="groupname" />
+    <result column="userid" jdbcType="INTEGER" property="userid"/>
   </resultMap>
   <sql id="Base_Column_List">
-    groupid, groupname
+    groupid, groupname,userid
   </sql>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_group
     where groupid = #{groupid,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert">
-    insert into t_group
-    values (#{groupname,jdbcType=VARCHAR})
+    insert into t_group (groupname,userid)
+    values (#{groupname,jdbcType=VARCHAR},#{userid,jdbcType=INTEGER})
   </insert>
 
   <select id="selectAll" resultMap="BaseResultMap">
     select
     *
-    from t_group
+    from t_group <where>
+        <if test="groupname!=null">
+          groupname = #{groupname}
+        </if>
+         <if test="userid!=null">
+           and userid = #{userid}
+         </if>
+  </where>
   </select>
-  <select id="selectByName" resultType="java.lang.Integer">
-    select count(*) from t_group where groupname = #{groupname}
-  </select>
+
+
   <select id="selectById" resultType="com.tang.work.dao.Group">
     select * from t_group where groupid = #{id}
   </select>
