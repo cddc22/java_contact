@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tang.work.dao.ContactDao">
+  <resultMap id="BaseResultMap" type="com.tang.work.dao.Contact">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+    <result column="groupid" jdbcType="INTEGER" property="groupid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, "name", telephone, sex, wechat, address, birth, groupid, userid, email
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_contact
+    where name = #{name}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from t_contact
+
+
+  </select>
+  <select id="selectByGroup" resultType="com.tang.work.dao.Contact">
+    select <include refid="Base_Column_List" />
+    from t_contact
+        where groupid = #{groupid}
+
+  </select>
+  <select id="selectById" resultType="com.tang.work.dao.Contact">
+    select <include refid="Base_Column_List" />
+    from t_contact
+        where id = #{id}
+  </select>
+  <select id="countByGroup" resultType="java.lang.Integer">
+    select count(*) from t_contact
+        where groupid = #{groupid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_contact
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.tang.work.dao.Contact" useGeneratedKeys="true">
+    insert into t_contact
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        "name",
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tang.work.dao.Contact">
+    update t_contact
+    <set>
+      <if test="name != null">
+        "name" = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

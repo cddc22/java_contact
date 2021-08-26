@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<javafx.scene.layout.Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tang.work.controller.AddGroup">
+	<children>
+					<JFXButton defaultButton="true" layoutX="215.0" layoutY="237.0" mnemonicParsing="false" onAction="#addGro" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #5cb85c;" text="添  加" textFill="WHITE">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</JFXButton>
+				<JFXButton cancelButton="true" layoutX="332.0" layoutY="237.0" mnemonicParsing="false" onAction="#back" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #d9534f;" text="关  闭" textFill="WHITE">
+					<cursor>
+						<Cursor fx:constant="HAND" />
+					</cursor>
+				</JFXButton>
+      <JFXTextField fx:id="groupname" layoutX="210.0" layoutY="148.0" promptText="请输入要添加的组名" />
+				<Label layoutX="226.0" layoutY="44.0" prefHeight="56.0" prefWidth="170.0" text="添加联系组">
+					<font>
+						<Font size="32.0" />
+					</font>
+				</Label>
+				<Label layoutX="132.0" layoutY="148.0" prefHeight="31.0" prefWidth="65.0" text="   组名">
+					<font>
+						<Font size="16.0" />
+					</font>
+				</Label>
+	</children>
+</javafx.scene.layout.Pane>

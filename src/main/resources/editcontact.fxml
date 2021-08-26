@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tang.work.controller.EditContact">
+   <children>
+      <JFXTextField fx:id="name" layoutX="210.0" layoutY="50.0" prefHeight="27.0" prefWidth="191.0" />
+      <JFXTextField fx:id="telephone" layoutX="210.0" layoutY="98.0" prefHeight="27.0" prefWidth="191.0" />
+      <JFXTextField fx:id="wechat" layoutX="210.0" layoutY="149.0" prefHeight="27.0" prefWidth="191.0" />
+      <JFXTextField fx:id="email" layoutX="210.0" layoutY="208.0" prefHeight="27.0" prefWidth="191.0" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="41.0" prefWidth="120.0" text="编辑联系人">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="133.0" layoutY="49.0" prefHeight="31.0" prefWidth="65.0" text="姓   名">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="207.0" prefHeight="31.0" prefWidth="65.0" text="Email">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="100.0" prefHeight="31.0" prefWidth="65.0" text="手   机">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="121.0" layoutY="412.0" prefHeight="31.0" prefWidth="65.0" text="分   组">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton defaultButton="true" layoutX="138.0" layoutY="562.0" mnemonicParsing="false" onAction="#addContact" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #5cb85c;" text="添  加" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton cancelButton="true" layoutX="401.0" layoutY="562.0" mnemonicParsing="false" onAction="#reset" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #d9534f;" text="重  置" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="121.0" layoutY="256.0" prefHeight="31.0" prefWidth="65.0" text="生日">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXRadioButton fx:id="sex1" layoutX="205.0" layoutY="364.0" mnemonicParsing="false" text="男">
+         <toggleGroup>
+            <ToggleGroup fx:id="ButtonGroup" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="sex2" layoutX="338.0" layoutY="364.0" mnemonicParsing="false" text="女" toggleGroup="$ButtonGroup" />
+      <Label layoutX="120.0" layoutY="314.0" text="地  址" />
+      <Label layoutX="124.0" layoutY="364.0" text="性别" />
+      <JFXTextField fx:id="address" layoutX="214.0" layoutY="299.0" prefHeight="30.0" prefWidth="315.0" />
+      <Label layoutX="122.0" layoutY="148.0" prefHeight="31.0" prefWidth="65.0" text="微信">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXListView fx:id="groupsListView" layoutX="206.0" layoutY="412.0" prefHeight="107.0" prefWidth="191.0" />
+      <DatePicker fx:id="birth1" layoutX="212.0" layoutY="257.0" prefHeight="30.0" prefWidth="191.0" />
+   </children>
+</Pane>
