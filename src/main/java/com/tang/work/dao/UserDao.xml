@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tang.work.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.tang.work.dao.User">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+<!--  <sql id="Base_Column_List">-->
+<!--    userid, username, "password"-->
+<!--  </sql>-->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select *
+   from T_user
+    where username = #{param1} and password = #{param2}
+  </select>
+  <select id="selectByName" resultType="java.lang.Integer">
+    select count(*)
+from T_user
+        where username=#{username}
+  </select>
+
+
+  <insert id="insert" >
+    insert into T_user (username, password)
+    values (#{param1}, #{param2})
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.tang.work.dao.User">
+    update T_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        "password" = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>
