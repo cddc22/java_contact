@@ -61,7 +61,7 @@ public class Login implements Initializable{
 
              if (user != null) {
                  //打开主页 设置登录用户的id
-                 if (user.getUsername().equals("q")) {
+                 if ("q".equals(user.getUsername())) {
                      ContactApplication.ROOT = true;
                  }
                  int a = user.getUserid();
@@ -86,7 +86,7 @@ public class Login implements Initializable{
     @SneakyThrows
     private void openMainWindows() {
         Stage mainStage = new Stage();
-        mainStage.setScene(new Scene(ContactApplication.loadFxml("/index.fxml").load()));
+        mainStage.setScene(new Scene(ContactApplication.loadFxml("/fxml/index.fxml").load()));
         mainStage.show();
 
         mainStage.getIcons().add(new Image(Objects.requireNonNull(ContactApplication.class.getResourceAsStream("/images/icon.png"))));
@@ -116,7 +116,7 @@ public class Login implements Initializable{
     @SneakyThrows
     public void register() {
         Stage regStage = new Stage();
-        regStage.setScene(new Scene(ContactApplication.loadFxml("/register.fxml").load()));
+        regStage.setScene(new Scene(ContactApplication.loadFxml("/fxml/register.fxml").load()));
         regStage.show();
         Window window = username.getScene().getWindow();
         if(window instanceof Stage){

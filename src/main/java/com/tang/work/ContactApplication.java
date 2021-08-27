@@ -42,7 +42,7 @@ public class ContactApplication extends Application implements ApplicationRunner
 
     @Override
     public void start(Stage stage) throws Exception {
-            stage.setScene(new Scene(loadFxml("/login.fxml").load()));
+            stage.setScene(new Scene(loadFxml("/fxml/login.fxml").load()));
             stage.getIcons().add(new Image(Objects.requireNonNull(ContactApplication.class.getResourceAsStream("/images/icon.png"))));
             stage.show();
 

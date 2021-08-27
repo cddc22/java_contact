@@ -101,14 +101,14 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
     @SneakyThrows
     public void addGroup() {
         Stage mainStage = new Stage();
-        mainStage.setScene(new Scene(ContactApplication.loadFxml("/addGroup.fxml").load()));
+        mainStage.setScene(new Scene(ContactApplication.loadFxml("/fxml/addGroup.fxml").load()));
         mainStage.getIcons().add(new Image(ContactApplication.class.getResourceAsStream("/images/icon.png")));
         mainStage.show();
     }
     @SneakyThrows
     public void addPerson() {
         Stage mainStage = new Stage();
-        mainStage.setScene(new Scene(ContactApplication.loadFxml("/addContact.fxml").load()));
+        mainStage.setScene(new Scene(ContactApplication.loadFxml("/fxml/addContact.fxml").load()));
         mainStage.getIcons().add(new Image(ContactApplication.class.getResourceAsStream("/images/icon.png")));
         mainStage.show();
     }
@@ -120,7 +120,7 @@ public class Index extends AbstractJavaFxApplicationSupport implements Initializ
             selectUserId = con2.getId();
             System.out.println(selectUserId);
             Stage mainStage = new Stage();
-            mainStage.setScene(new Scene(ContactApplication.loadFxml("/editcontact.fxml").load()));
+            mainStage.setScene(new Scene(ContactApplication.loadFxml("/fxml/editcontact.fxml").load()));
             mainStage.getIcons().add(new Image(ContactApplication.class.getResourceAsStream("/images/icon.png")));
             mainStage.show();
         }
