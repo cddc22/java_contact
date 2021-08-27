@@ -47,6 +47,7 @@ public class EditContact implements Initializable {
     @Autowired
     Index index;
     private int contactid;
+    private int groupid;
 
     public EditContact() {
     }
@@ -58,7 +59,13 @@ public class EditContact implements Initializable {
     }
 
     public void addContact() {
-        int selectedIndex = groupsListView.getSelectionModel().getSelectedItem().getGroupid();
+        try {
+            groupid= groupsListView.getSelectionModel().getSelectedItem().getGroupid();
+        }catch (NullPointerException e)
+        {
+            //e.printStackTrace();
+        }
+        System.out.println(groupid);
         contact.setName(name.getText());
         contact.setTelephone(telephone.getText());
         contact.setWechat(wechat.getText());
@@ -71,7 +78,7 @@ public class EditContact implements Initializable {
         }else {
             contact.setSex("女");
         }
-        contact.setGroupid(selectedIndex);
+        contact.setGroupid(groupid);
         contact.setId(contactid);
         contact.setUserid(ContactApplication.UserId);
         int i = contactDao.updateByPrimaryKeySelective(contact);
@@ -106,6 +113,7 @@ public class EditContact implements Initializable {
             sex2.setSelected(true);
         }
         contactid=contact.getId();
+        groupid=contact.getGroupid();
         groupsListView.scrollTo(1);
 
        //groupsListView.getSelectionModel().select(1);
